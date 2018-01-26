@@ -1,26 +1,42 @@
-$body-color: #f2fdff;
-$nav-background: #b29174;
-$modal-button: #d9f9ff;
-$modal-button-text: #587175;
-
+$body-color: #f5f2e3;
+$nav-background: #bdc4b5;
+$modal-button: #704f4f;
+$modal-button-text: #fffcec;
+$border-color: #604444;
+$text-color: #2a1717;
+$text-shadow: #000;
+$shadow: #bdc4b5;
+$h1: #604444;
+$shadoww: #fff;
 
 
 
 
 body {
   background: $body-color;
+  color: $text-color;
 }
 
 h1 {
+  color: $h1;
   font-size: 80px;
+  text-shadow: 1.25px 1.25px 2px $text-shadow;
 }
 
 nav {
   background-color: $nav-background;
+  border: 2px solid $border-color;
   padding: 10px;
 }
 
 .btn-primary {
   background: $modal-button;
+  border: 1.5px solid $border-color;
   color: $modal-button-text;
+  margin: 5px;
+  width: 120px;
+}
+
+.crud {
+  float: left;
 }
