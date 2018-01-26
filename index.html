@@ -12,6 +12,7 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
+      <!-- Nav bar -->
       <nav>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sign-up" id="signUpButton">Sign Up</button>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sign-in" id="signInButton">Sign In</button>
@@ -21,7 +22,12 @@
         </form>
       </nav>
 
-      <h1>Example</h1>
+      <h1>Petville Animal Hospital</h1>
+
+      <br>
+
+      <!-- error/success messages here -->
+      <p class="message-area" id="message">
 
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
       eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -30,6 +36,33 @@
       velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
       cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
       est laborum.</p>
+
+      <br><br>
+
+
+      <!-- CRUD Buttons - Pets -->
+      <!-- Create Pet button -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create-pet" id="newPetButton">Create Pet</button>
+      <!-- Show one Pet Button -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#show-pet" id="viewOnePetButton">View a Pet</button>
+      <!-- Show all Pets Button -->
+      <form class="" id="viewAll">
+        <button type="button" class="btn btn-primary" id="viewAllPetsButton">View all Pets</button>
+      </form>
+      <!-- Update Pet Button -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#update-pet" id="updatePetButton">Update a Pet</button>
+      <!-- Delete Pet button -->
+      <fieldset class="delete-a-pet">
+        <button type="button" class="btn btn-primary" id="deletePetForm">Delete a Pet</button>
+        <form class="delete-form hide" id="delete-pet">
+          <input type="number" name="pet[id]" placeholder="Enter Pet ID">
+          <input type="submit" name="submit" id="deletePetButton" placeholder="Enter Pet ID">
+        </form>
+      </fieldset>
+
+
+<!-- Data will display here. -->
+      <div class="display-area" id="content"></div>
 
       <!-- modals start here -->
 <!-- sign up modal -->
@@ -118,5 +151,100 @@
           </div>
         </div>
       </div>
+
+      <!-- create pet  -->
+      <div class="modal fade" id="create-pet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Create Pet</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class ="new-pet-modal" id="create-pet-button">
+                <fieldset>
+                  <input type="text" name="pet[name]" placeholder="Enter Name">
+                  <input type="text" name="pet[species]" placeholder="Enter Species">
+                  <input type="text" name="pet[gender]" placeholder="Enter Gender">
+                  <input type="number" name="pet[age]" placeholder="Enter Age">
+                  <input type="text" name="pet[color]" placeholder="Enter Color">
+                  <input type="text" name="pet[owner]" placeholder="Enter Owner Name (Last, First)">
+                  <input class="button" type="submit" name="submit" value="Create Pet">
+                  <p id="create-error"></p>
+                </fieldset>
+                <!-- <button type="submit" class="btn btn-primary">Sign In</button> -->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- view a pet -->
+      <div class="modal fade" id="show-pet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">View a Pet</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class ="view-pet-modal" id="view-pet-button">
+                <fieldset>
+                  <input type="number" name="pet[id]" placeholder="Enter Pet ID">
+                  <input class="button" type="submit" name="submit" value="View Pet">
+                  <p id="view-pet-error"></p>
+                </fieldset>
+                <!-- <button type="submit" class="btn btn-primary">Sign In</button> -->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- update a pet -->
+      <div class="modal fade" id="update-pet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Update Pet</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class ="update-modal" id="update-button">
+                <fieldset>
+                  <input type="text" name="pet[name]" placeholder="Enter Name">
+                  <input type="text" name="pet[species]" placeholder="Enter Species">
+                  <input type="text" name="pet[gender]" placeholder="Enter Gender">
+                  <input type="number" name="pet[age]" placeholder="Enter Age">
+                  <input type="text" name="pet[color]" placeholder="Enter Color">
+                  <input type="text" name="pet[owner]" placeholder="Enter Owner Name (Last, First)">
+                  <input class="button" type="submit" name="submit" value="Update Pet">
+                  <p id="update-error"></p>
+                </fieldset>
+                <!-- <button type="submit" class="btn btn-primary">Sign In</button> -->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
     </body>
 </html>

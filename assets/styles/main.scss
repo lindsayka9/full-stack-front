@@ -1,0 +1,26 @@
+$body-color: #f2fdff;
+$nav-background: #b29174;
+$modal-button: #d9f9ff;
+$modal-button-text: #587175;
+
+
+
+
+
+body {
+  background: $body-color;
+}
+
+h1 {
+  font-size: 80px;
+}
+
+nav {
+  background-color: $nav-background;
+  padding: 10px;
+}
+
+.btn-primary {
+  background: $modal-button;
+  color: $modal-button-text;
+}
