@@ -2,7 +2,8 @@
 
 const config = {
   apiOrigins: {
-    production: 'https://ga-wdi-boston.herokuapp.com'
+    development: 'https://floating-meadow-70408.herokuapp.com/',
+    production: 'https://floating-meadow-70408.herokuapp.com/'
   }
 }
 
