@@ -12,6 +12,15 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
+      <nav>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sign-up" id="signUpButton">Sign Up</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sign-in" id="signInButton">Sign In</button>
+        <button type="button" class="btn btn-primary hide" data-toggle="modal" data-target="#change-password" id="passwordButton">Change Password</button>
+        <form class="hide" id="sign-out-trigger">
+          <button type="button" class="btn btn-primary" id="signOutButton">Sign Out</button>
+        </form>
+      </nav>
+
       <h1>Example</h1>
 
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
@@ -21,5 +30,93 @@
       velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
       cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
       est laborum.</p>
+
+      <!-- modals start here -->
+<!-- sign up modal -->
+      <div class="modal fade" id="sign-up" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Sign Up!</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class ="sign-up-modal">
+                <form id="sign-up-form">
+                  <fieldset>
+                    <input class="sign-up-input" type="text" name="credentials[email]" placeholder="Enter Email">
+                    <input class="sign-up-input" type="password" name="credentials[password]" placeholder="Enter Password">
+                    <input class="sign-up-input" type="password" name="credentials[password-confirmation]" placeholder="Confirm Password">
+                    <input class="button" type="submit" name="submit" value="Sign-Up!">
+                    <p id="sign-up-error"></p>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Sign in modal -->
+      <div class="modal fade" id="sign-in" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Sign In!</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class ="sign-in-modal" id="sign-in-form">
+                <fieldset>
+                  <input type="text" name="credentials[email]" placeholder="Enter Email">
+                  <input type="password" name="credentials[password]" placeholder="Enter Password">
+                  <input class="button" type="submit" name="submit" value="Sign-In!">
+                  <p id="sign-in-error"></p>
+                </fieldset>
+                <!-- <button type="submit" class="btn btn-primary">Sign In</button> -->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Change Password Modal -->
+      <div class="modal fade" id="change-password" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Change Password!</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class ="password-modal" id="change-password-button">
+                <fieldset>
+                  <input type="password" name="passwords[old]" placeholder="Enter Old Password">
+                  <input type="password" name="passwords[new]" placeholder="Enter New Password">
+                  <input class="button" type="submit" name="submit" value="Change Password!">
+                  <p id="password-error"></p>
+                </fieldset>
+                <!-- <button type="submit" class="btn btn-primary">Sign In</button> -->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
     </body>
 </html>
