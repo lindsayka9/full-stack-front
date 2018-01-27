@@ -1,5 +1,6 @@
 'use strict'
 
+const petsTemplate = require('./templates/pets-template.handlebars')
 const store = require('./store')
 
 const signInSuccess = function (data) {
@@ -66,6 +67,7 @@ const signOutFailure = function (data) {
 }
 
 const createPetSuccess = function (data) {
+  console.log(data.pets)
   $('#message').text('Pet successfully created!').css('color', 'green')
   $('#create-pet').modal('hide')
 }
@@ -73,6 +75,18 @@ const createPetSuccess = function (data) {
 const createPetFailure = function (error) {
   console.error(error)
   $('#create-error').text('Error creating pet').css('color', 'red')
+}
+
+const showPetsSuccess = function (data) {
+  console.log(data.pets)
+  const petHtml = petsTemplate({ pets: data.pets })
+  $('#content').html('')
+  $('#content').html(petHtml)
+}
+
+const showPetsFailure = function (error) {
+  console.error(error)
+  $('#message').text('Error showing pets')
 }
 
 module.exports = {
@@ -85,5 +99,7 @@ module.exports = {
   signOutFailure,
   signOutSuccess,
   createPetSuccess,
-  createPetFailure
+  createPetFailure,
+  showPetsSuccess,
+  showPetsFailure
 }

@@ -52,10 +52,21 @@ const createPet = function (data) {
   })
 }
 
+const showPets = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/pets',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
   signOut,
-  createPet
+  createPet,
+  showPets
 }

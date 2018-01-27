@@ -1,0 +1,16 @@
+{{#each pets as |pet|}}
+
+<!-- template to display pet -->
+<div class="pets-content" data-id="{{pet.id}}">
+  <h5><strong>Name:</strong> {{pet.name}}</h5>
+  <h5><strong>Pet ID:</strong> {{pet.id}}</h5>
+  <h5><strong>Species:</strong> {{pet.species}}</h5>
+  <h5><strong>Age:</strong> {{pet.age}}</h5>
+  <h5><strong>Gender:</strong> {{pet.gender}}</h5>
+  <h5><strong>Color:</strong> {{pet.color}}</h5>
+  <h5><strong>Owner:</strong> {{pet.owner}}</h5>
+    <button data-id="{{pet.id}}" type="button" class="editButton btn btn-default" data-toggle="modal" data-target="#update-pet{{pet.id}}">Update</button>
+    <button class="btn btn-default remove" type="button" data-id="{{pet.id}}">Remove</button>
+</div>
+
+{{/each}}

@@ -49,7 +49,14 @@ const onCreatePet = function (event) {
     .then(ui.createPetSuccess)
     .catch(ui.createPetFailure)
   $('#create-pet-button').trigger('reset')
-  // add jquery to clear form fields
+  // add jquery to UI to display pet info on success
+}
+
+const onShowAllPets = function (event) {
+  event.preventDefault()
+  api.showPets()
+    .then(ui.showPetsSuccess)
+    .catch(ui.showPetsFailure)
 }
 
 const addHandlers = function () {
@@ -58,6 +65,7 @@ const addHandlers = function () {
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out-trigger').on('click', onSignOut)
   $('#create-pet').on('submit', onCreatePet)
+  $('#viewAllPetsButton').on('click', onShowAllPets)
 }
 
 module.exports = {
