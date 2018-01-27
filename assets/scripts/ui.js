@@ -58,10 +58,21 @@ const signOutSuccess = function (data) {
   $('#sign-in-error').text('')
   $('#password-error').text('')
   $('#sign-up-error').text('')
+  $('#create-error').text('')
 }
 
 const signOutFailure = function (data) {
   $('#message').text('Error signing out').css('color', 'red')
+}
+
+const createPetSuccess = function (data) {
+  $('#message').text('Pet successfully created!').css('color', 'green')
+  $('#create-pet').modal('hide')
+}
+
+const createPetFailure = function (error) {
+  console.error(error)
+  $('#create-error').text('Error creating pet').css('color', 'red')
 }
 
 module.exports = {
@@ -72,5 +83,7 @@ module.exports = {
   changePasswordSuccess,
   changePasswordFailure,
   signOutFailure,
-  signOutSuccess
+  signOutSuccess,
+  createPetSuccess,
+  createPetFailure
 }

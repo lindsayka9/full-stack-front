@@ -41,9 +41,21 @@ const signOut = function (data) {
   })
 }
 
+const createPet = function (data) {
+  return $.ajax({
+    url: config.apiOrigin + '/pets',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
-  signOut
+  signOut,
+  createPet
 }
