@@ -59,6 +59,13 @@ const onShowAllPets = function (event) {
     .catch(ui.showPetsFailure)
 }
 
+const onDeletePet = function (event) {
+  event.preventDefault()
+  api.deletePet()
+    .then(ui.deletePetSuccess)
+    .catch(ui.deletePetFailure)
+}
+
 const addHandlers = function () {
   $('#sign-in').on('submit', onSignIn)
   $('#sign-up').on('submit', onSignUp)
@@ -66,6 +73,8 @@ const addHandlers = function () {
   $('#sign-out-trigger').on('click', onSignOut)
   $('#create-pet').on('submit', onCreatePet)
   $('#viewAllPetsButton').on('click', onShowAllPets)
+  $('#deletePetForm').on('click', function () { $('#delete-pet').removeClass('hide') })
+  $('#deletePetButton').on('submit', onDeletePet)
 }
 
 module.exports = {

@@ -14,6 +14,7 @@ const signInSuccess = function (data) {
   $('#sign-in').modal('hide')
   $('#message').text('You have successfully signed in!')
   $('#sign-in-error').text('')
+  $('.crud').removeClass('hide')
 }
 
 const signInFailure = function (error) {
@@ -60,6 +61,7 @@ const signOutSuccess = function (data) {
   $('#password-error').text('')
   $('#sign-up-error').text('')
   $('#create-error').text('')
+  $('.crud').addClass('hide')
 }
 
 const signOutFailure = function (data) {
