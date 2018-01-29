@@ -51,6 +51,20 @@
       <button type="button" class="btn btn-primary crud hide" data-toggle="modal" data-target="#destroy-pet" id="destroyPetButton">Delete a Pet</button>
       <br><br><br>
 
+      <!-- CRUD buttons - Owners -->
+      <button type="button" class="btn btn-primary crud hide" data-toggle="modal" data-target="#create-owner" id="newOwnerButton">Create Owner</button>
+      <!-- Show one Owner Button -->
+      <button type="button" class="btn btn-primary crud hide" data-toggle="modal" data-target="#show-owner" id="viewOneOwnerButton">View an Owner</button>
+      <!-- Show all Owners Button -->
+      <form class="form" id="viewAll">
+        <button type="button" class="btn btn-primary crud hide" id="viewAllOwnersButton">View all Owners</button>
+      </form>
+      <!-- Update Owner Button -->
+      <button type="button" class="btn btn-primary crud hide" data-toggle="modal" data-target="#update-owner" id="updateOwnerButton">Update an Owner</button>
+      <!-- Delete Owner button -->
+      <button type="button" class="btn btn-primary crud hide" data-toggle="modal" data-target="#destroy-owner" id="destroyOwnerButton">Delete an Owner</button>
+      <br><br><br>
+
 
 <!-- Data will display here. -->
       <div class="display-area hide" id="content"></div>
@@ -254,6 +268,121 @@
                   <input type="number" name="pet[id]" placeholder="Enter Pet ID">
                   <input class="button" type="submit" name="submit" value="Delete Pet">
                   <p id="destroy-pet-error"></p>
+                </fieldset>
+                <!-- <button type="submit" class="btn btn-primary">Sign In</button> -->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- create owner  -->
+      <div class="modal fade" id="create-owner" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="thing8">Create Owner</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class ="new-owner-modal" id="create-owner-button">
+                <fieldset>
+                  <input type="text" name="owner[name]" placeholder="Enter Name">
+                  <input type="text" name="owner[phone_number]" placeholder="Enter Phone Number">
+                  <input class="button" type="submit" name="submit" value="Create Owner">
+                  <p id="create-owner-error"></p>
+                </fieldset>
+                <!-- <button type="submit" class="btn btn-primary">Sign In</button> -->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- view a owner -->
+      <div class="modal fade" id="show-owner" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="thing9">View an Owner</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class ="view-owner-modal" id="view-owner-button">
+                <fieldset>
+                  <input type="number" name="owner[id]" placeholder="Enter Owner ID">
+                  <input class="button" type="submit" name="submit" value="View Owner">
+                  <p id="view-owner-error"></p>
+                </fieldset>
+                <!-- <button type="submit" class="btn btn-primary">Sign In</button> -->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- update an owner -->
+      <div class="modal fade" id="update-owner" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="thing10">Update an Owner</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class ="update-modal" id="update-owner-button">
+                <fieldset>
+                  <input type="number" name="owner[id]" placeholder="Enter Owner ID">
+                  <input type="text" name="owner[name]" placeholder="Enter Name">
+                  <input type="text" name="owner[phone_number]" placeholder="Enter Phone Number">
+                  <input class="button" type="submit" name="submit" value="Update Owner">
+                  <p id="update-owner-error"></p>
+                </fieldset>
+                <!-- <button type="submit" class="btn btn-primary">Sign In</button> -->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- Destroy owner -->
+      <div class="modal fade" id="destroy-owner" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="thing11">Delete Owner Record</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class ="view-owner-modal" id="destroy-owner-button">
+                <fieldset>
+                  <input type="number" name="owner[id]" placeholder="Enter Owner ID">
+                  <input class="button" type="submit" name="submit" value="Delete Owner">
+                  <p id="destroy-owner-error"></p>
                 </fieldset>
                 <!-- <button type="submit" class="btn btn-primary">Sign In</button> -->
               </form>
