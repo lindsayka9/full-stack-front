@@ -123,7 +123,7 @@ const showPetSuccess = function (data) {
 
 const showPetFailure = function () {
   // console.error(error)
-  $('#message').text('Error showing pets').css('color', 'red')
+  $('#message').text('Error retrieving record').css('color', 'red')
 }
 
 module.exports = {
