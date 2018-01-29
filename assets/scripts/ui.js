@@ -19,6 +19,7 @@ const signInSuccess = function (data) {
   $('#delete-pet').removeClass('hide')
   $('.sign-in-message').addClass('hide')
   $('.photo').addClass('hide')
+  $('#content').removeClass('hide')
 }
 
 const signInFailure = function () {
@@ -64,6 +65,7 @@ const signOutSuccess = function (data) {
   $('.crud').addClass('hide')
   $('.sign-in-message').removeClass('hide')
   $('.photo').removeClass('hide')
+  $('#content').addClass('hide')
 }
 
 const signOutFailure = function (data) {
