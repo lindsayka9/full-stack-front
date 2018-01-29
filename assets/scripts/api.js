@@ -62,11 +62,23 @@ const showPets = function () {
   })
 }
 
+const deletePet = function (data) {
+  console.log(data)
+  return $.ajax({
+    url: config.apiOrigin + '/pets/' + data.pet.id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
   signOut,
   createPet,
-  showPets
+  showPets,
+  deletePet
 }

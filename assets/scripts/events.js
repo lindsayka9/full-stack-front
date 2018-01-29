@@ -61,9 +61,12 @@ const onShowAllPets = function (event) {
 
 const onDeletePet = function (event) {
   event.preventDefault()
-  api.deletePet()
+  console.log(event.target)
+  const data = getFormFields(event.target)
+  api.deletePet(data)
     .then(ui.deletePetSuccess)
     .catch(ui.deletePetFailure)
+  $('#destroy-pet-button').trigger('reset')
 }
 
 const addHandlers = function () {
@@ -73,8 +76,8 @@ const addHandlers = function () {
   $('#sign-out-trigger').on('click', onSignOut)
   $('#create-pet').on('submit', onCreatePet)
   $('#viewAllPetsButton').on('click', onShowAllPets)
-  $('#deletePetForm').on('click', function () { $('#delete-pet').removeClass('hide') })
-  $('#deletePetButton').on('submit', onDeletePet)
+  $('#destroy-pet').on('submit', onDeletePet)
+  $('#content').on('click', '.remove', onDeletePet)
 }
 
 module.exports = {

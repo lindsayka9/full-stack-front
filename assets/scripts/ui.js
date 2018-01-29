@@ -15,6 +15,7 @@ const signInSuccess = function (data) {
   $('#message').text('You have successfully signed in!')
   $('#sign-in-error').text('')
   $('.crud').removeClass('hide')
+  $('#delete-pet').removeClass('hide')
 }
 
 const signInFailure = function (error) {
@@ -88,7 +89,17 @@ const showPetsSuccess = function (data) {
 
 const showPetsFailure = function (error) {
   console.error(error)
-  $('#message').text('Error showing pets')
+  $('#message').text('Error showing pets').css('color', 'red')
+}
+
+const deletePetSuccess = function (id) {
+  // console.log(id)
+  $('#message').text('Successfully deleted pet!').css('color', 'green')
+}
+
+const deletePetFailure = function (error) {
+  console.error(error)
+  $('#message').text('Error deleting pet').css('color', 'red')
 }
 
 module.exports = {
@@ -103,5 +114,7 @@ module.exports = {
   createPetSuccess,
   createPetFailure,
   showPetsSuccess,
-  showPetsFailure
+  showPetsFailure,
+  deletePetSuccess,
+  deletePetFailure
 }

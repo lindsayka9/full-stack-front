@@ -52,13 +52,7 @@
       <!-- Update Pet Button -->
       <button type="button" class="btn btn-primary crud hide" data-toggle="modal" data-target="#update-pet" id="updatePetButton">Update a Pet</button>
       <!-- Delete Pet button -->
-      <fieldset class="delete-a-pet">
-        <button type="button" class="btn btn-primary crud hide" id="deletePetForm">Delete a Pet</button>
-        <form class="delete-form hide" id="delete-pet">
-          <input type="number" name="pet[id]" placeholder="Enter Pet ID">
-          <input type="submit" name="submit" id="deletePetButton" placeholder="Enter Pet ID">
-        </form>
-      </fieldset>
+      <button type="button" class="btn btn-primary crud hide" data-toggle="modal" data-target="#destroy-pet" id="destroyPetButton">Delete a Pet</button>
 
 
 
@@ -235,6 +229,34 @@
                   <input type="text" name="pet[owner]" placeholder="Enter Owner Name (Last, First)">
                   <input class="button" type="submit" name="submit" value="Update Pet">
                   <p id="update-error"></p>
+                </fieldset>
+                <!-- <button type="submit" class="btn btn-primary">Sign In</button> -->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- Destroy pet -->
+      <div class="modal fade" id="destroy-pet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="thing7">Destroy a Pet</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class ="view-pet-modal" id="destroy-pet-button">
+                <fieldset>
+                  <input type="number" name="pet[id]" placeholder="Enter Pet ID">
+                  <input class="button" type="submit" name="submit" value="Delete Pet">
+                  <p id="destroy-pet-error"></p>
                 </fieldset>
                 <!-- <button type="submit" class="btn btn-primary">Sign In</button> -->
               </form>
