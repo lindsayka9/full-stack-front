@@ -65,6 +65,7 @@ const signOutSuccess = function (data) {
   $('.crud').addClass('hide')
   $('.sign-in-message').removeClass('hide')
   $('.photo').removeClass('hide')
+  $('#content').html('')
   $('#content').addClass('hide')
 }
 
