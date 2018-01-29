@@ -2,6 +2,7 @@
 
 const petsTemplate = require('./templates/pets-template.handlebars')
 const store = require('./store')
+const petTemplate = require('./templates/pet-template.handlebars')
 
 const signInSuccess = function (data) {
   store.user = data.user
@@ -12,10 +13,11 @@ const signInSuccess = function (data) {
   // $('#new-game').removeClass('hide')
   // $('#game').removeClass('hide')
   $('#sign-in').modal('hide')
-  $('#message').text('You have successfully signed in!')
+  $('#message').text('You have successfully signed in!').css('color', 'green')
   $('#sign-in-error').text('')
   $('.crud').removeClass('hide')
   $('#delete-pet').removeClass('hide')
+  $('.sign-in-message').addClass('hide')
 }
 
 const signInFailure = function () {
@@ -63,6 +65,7 @@ const signOutSuccess = function (data) {
   $('#sign-up-error').text('')
   $('#create-error').text('')
   $('.crud').addClass('hide')
+  $('.sign-in-message').removeClass('hide')
 }
 
 const signOutFailure = function (data) {
@@ -110,6 +113,19 @@ const updatePetFailure = function () {
   $('#message').text('Error updating pet').css('color', 'red')
 }
 
+const showPetSuccess = function (data) {
+  // console.log(data)
+  const petHtml = petTemplate({ pet: data.pet })
+  $('#show-pet').modal('hide')
+  $('#content').html(petHtml)
+  $('#message').text('Successfully retrieved pet record!').css('color', 'green')
+}
+
+const showPetFailure = function () {
+  // console.error(error)
+  $('#message').text('Error showing pets').css('color', 'red')
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -126,5 +142,7 @@ module.exports = {
   deletePetSuccess,
   deletePetFailure,
   updatePetSuccess,
-  updatePetFailure
+  updatePetFailure,
+  showPetSuccess,
+  showPetFailure
 }

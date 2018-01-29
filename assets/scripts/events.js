@@ -59,6 +59,17 @@ const onShowAllPets = function (event) {
     .catch(ui.showPetsFailure)
 }
 
+const onShowAPet = function (event) {
+  // console.log(event.target)
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  // console.log(data)
+  api.showPet(data)
+    .then(ui.showPetSuccess)
+    .catch(ui.showPetFailure)
+  $('#show-pet-button').trigger('reset')
+}
+
 const onDeletePet = function (event) {
   event.preventDefault()
   // console.log(event.target)
@@ -73,8 +84,7 @@ const onDeletePet = function (event) {
 const onUpdatePet = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  const petId = data.pet.id
-  api.updatePet(petId, data)
+  api.updatePet(data)
     .then(ui.updatePetSuccess)
     .catch(ui.updatePetFailure)
   $('#update-pet-button').trigger('reset')
@@ -91,6 +101,7 @@ const addHandlers = function () {
   $('#destroy-pet').on('submit', onDeletePet)
   $('#content').on('click', '.remove', onDeletePet)
   $('#update-pet').on('submit', onUpdatePet)
+  $('#show-pet').on('submit', onShowAPet)
 }
 
 module.exports = {

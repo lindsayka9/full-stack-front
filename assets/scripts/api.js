@@ -62,6 +62,18 @@ const showPets = function () {
   })
 }
 
+const showPet = function (data) {
+  // console.log(data)
+  return $.ajax({
+    url: config.apiOrigin + '/pets/' + data.pet.id,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
 const deletePet = function (data) {
   console.log(data)
   return $.ajax({
@@ -93,5 +105,6 @@ module.exports = {
   createPet,
   showPets,
   deletePet,
-  updatePet
+  updatePet,
+  showPet
 }
