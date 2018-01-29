@@ -75,7 +75,6 @@ const showPet = function (data) {
 }
 
 const deletePet = function (data) {
-  console.log(data)
   return $.ajax({
     url: config.apiOrigin + '/pets/' + data.pet.id,
     method: 'DELETE',
@@ -85,9 +84,9 @@ const deletePet = function (data) {
   })
 }
 
-const updatePet = function (petId, data) {
+const updatePet = function (data) {
   return $.ajax({
-    url: config.apiOrigin + '/pets/' + petId,
+    url: config.apiOrigin + '/pets/' + data.pet.id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token

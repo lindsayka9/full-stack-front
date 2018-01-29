@@ -74,8 +74,10 @@ const signOutFailure = function (data) {
 
 const createPetSuccess = function (data) {
   // console.log(data.pets)
+  const petHtml = petTemplate({ pet: data.pet })
   $('#message').text('Pet successfully created!').css('color', 'green')
   $('#create-pet').modal('hide')
+  $('#content').html(petHtml)
 }
 
 const createPetFailure = function () {
@@ -83,6 +85,7 @@ const createPetFailure = function () {
 }
 
 const showPetsSuccess = function (data) {
+  $('#message').text('Successfully retrieved pet records!').css('color', 'green')
   const petHtml = petsTemplate({ pets: data.pets })
   $('#content').html('')
   $('#content').html(petHtml)
@@ -107,6 +110,8 @@ const updatePetSuccess = function (data) {
   $('#update-pet').modal('hide')
   $('#message').text('Successfully updated pet!').css('color', 'green')
   $('#content').html('')
+  const petHtml = petTemplate({ pet: data.pet })
+  $('#content').html(petHtml)
 }
 
 const updatePetFailure = function () {
