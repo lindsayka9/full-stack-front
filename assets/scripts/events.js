@@ -67,6 +67,7 @@ const onDeletePet = function (event) {
     .then(ui.deletePetSuccess)
     .catch(ui.deletePetFailure)
   $('#destroy-pet-button').trigger('reset')
+  $('#content').html('')
 }
 
 const addHandlers = function () {
