@@ -9,7 +9,7 @@ const signInSuccess = function (data) {
   $('#signInButton').hide()
   $('#signUpButton').hide()
   $('#passwordButton').removeClass('hide')
-  $('#sign-out-trigger').removeClass('hide')
+  $('#signOutButton').removeClass('hide')
   // $('#new-game').removeClass('hide')
   // $('#game').removeClass('hide')
   $('#sign-in').modal('hide')
@@ -18,6 +18,7 @@ const signInSuccess = function (data) {
   $('.crud').removeClass('hide')
   $('#delete-pet').removeClass('hide')
   $('.sign-in-message').addClass('hide')
+  $('.photo').addClass('hide')
 }
 
 const signInFailure = function () {
@@ -53,11 +54,7 @@ const signOutSuccess = function (data) {
   $('#signInButton').show()
   $('#signUpButton').show()
   $('#passwordButton').addClass('hide')
-  $('#sign-out-trigger').addClass('hide')
-  // $('#new-game').addClass('hide')
-  // $('#games-finished').addClass('hide')
-  // $('#game').addClass('hide')
-  // $('sign-in-image').removeClass('hide')
+  $('#signOutButton').addClass('hide')
   $('#message').text('Successfully signed out!').css('color', 'green')
   store.user = null
   $('#sign-in-error').text('')
@@ -66,6 +63,7 @@ const signOutSuccess = function (data) {
   $('#create-error').text('')
   $('.crud').addClass('hide')
   $('.sign-in-message').removeClass('hide')
+  $('.photo').removeClass('hide')
 }
 
 const signOutFailure = function (data) {

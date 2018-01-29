@@ -95,7 +95,7 @@ const addHandlers = function () {
   $('#sign-in').on('submit', onSignIn)
   $('#sign-up').on('submit', onSignUp)
   $('#change-password').on('submit', onChangePassword)
-  $('#sign-out-trigger').on('click', onSignOut)
+  $('#signOutButton').on('click', onSignOut)
   $('#create-pet').on('submit', onCreatePet)
   $('#viewAllPetsButton').on('click', onShowAllPets)
   $('#destroy-pet').on('submit', onDeletePet)

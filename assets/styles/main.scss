@@ -10,29 +10,40 @@ $h1: #604444;
 $shadoww: #fff;
 
 
-
-
 body {
   background: $body-color;
   color: $text-color;
 }
 
+.sign-in-message {
+  color: $h1;
+  font-size: 20px;
+  text-align: center;
+  text-shadow: .5px .5px 1px $text-shadow;
+}
+
 h1 {
   color: $h1;
   font-size: 80px;
+  text-align: center;
   text-shadow: 1.25px 1.25px 2px $text-shadow;
 }
 
 h3 {
   color: $h1;
   font-size: 40px;
+  text-align: center;
   text-shadow: 1.25px 1.25px 2px $text-shadow;
+}
+
+p {
+  text-align: center;
 }
 
 nav {
   background-color: $nav-background;
   border: 2px solid $border-color;
-  padding: 10px;
+  padding: 6px;
 }
 
 .btn-primary {
@@ -56,4 +67,11 @@ nav {
 
 .message-area {
   font-weight: bold;
+}
+
+.photo {
+  align-items: center;
+  border: 2px solid $border-color;
+  display: block;
+  margin: 0 auto;
 }
