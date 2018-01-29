@@ -23,6 +23,12 @@ h1 {
   text-shadow: 1.25px 1.25px 2px $text-shadow;
 }
 
+h3 {
+  color: $h1;
+  font-size: 40px;
+  text-shadow: 1.25px 1.25px 2px $text-shadow;
+}
+
 nav {
   background-color: $nav-background;
   border: 2px solid $border-color;
@@ -38,5 +44,16 @@ nav {
 }
 
 .crud {
+  // clear: right;
+  clear: inherit;
   float: left;
+}
+
+.display-area {
+  height: 300px;
+  overflow: auto;
+}
+
+.message-area {
+  font-weight: bold;
 }

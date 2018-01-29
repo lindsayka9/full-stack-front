@@ -26,19 +26,16 @@
 
       <br>
 
+      <h3>Pet Record System</h3>
+
+      <br>
+
       <!-- error/success messages here -->
       <p class="message-area" id="message">
 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.</p>
+      <p>Sign in to access patient records.</p>
 
-      <br><br>
-
+      <br>
 
       <!-- CRUD Buttons - Pets -->
       <!-- Create Pet button -->
@@ -53,7 +50,7 @@
       <button type="button" class="btn btn-primary crud hide" data-toggle="modal" data-target="#update-pet" id="updatePetButton">Update a Pet</button>
       <!-- Delete Pet button -->
       <button type="button" class="btn btn-primary crud hide" data-toggle="modal" data-target="#destroy-pet" id="destroyPetButton">Delete a Pet</button>
-
+      <br><br><br>
 
 
 <!-- Data will display here. -->
@@ -221,6 +218,7 @@
             <div class="modal-body">
               <form class ="update-modal" id="update-button">
                 <fieldset>
+                  <input type="number" name="pet[id]" placeholder="Enter Pet ID">
                   <input type="text" name="pet[name]" placeholder="Enter Name">
                   <input type="text" name="pet[species]" placeholder="Enter Species">
                   <input type="text" name="pet[gender]" placeholder="Enter Gender">
@@ -246,7 +244,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h3 class="modal-title" id="thing7">Destroy a Pet</h3>
+              <h3 class="modal-title" id="thing7">Delete Pet Record</h3>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>

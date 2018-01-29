@@ -6,7 +6,7 @@ const api = require('./api')
 // const store = require('./store')
 
 const onSignIn = function (event) {
-  console.log(event.target)
+  // console.log(event.target)
   const data = getFormFields(event.target)
   event.preventDefault()
   api.signIn(data)
@@ -16,7 +16,7 @@ const onSignIn = function (event) {
 }
 
 const onSignUp = function (event) {
-  console.log(event.target)
+  // console.log(event.target)
   const data = getFormFields(event.target)
   event.preventDefault()
   api.signUp(data)
@@ -49,7 +49,7 @@ const onCreatePet = function (event) {
     .then(ui.createPetSuccess)
     .catch(ui.createPetFailure)
   $('#create-pet-button').trigger('reset')
-  // add jquery to UI to display pet info on success
+  $('#content').html('')
 }
 
 const onShowAllPets = function (event) {
@@ -61,12 +61,23 @@ const onShowAllPets = function (event) {
 
 const onDeletePet = function (event) {
   event.preventDefault()
-  console.log(event.target)
+  // console.log(event.target)
   const data = getFormFields(event.target)
   api.deletePet(data)
     .then(ui.deletePetSuccess)
     .catch(ui.deletePetFailure)
   $('#destroy-pet-button').trigger('reset')
+  $('#content').html('')
+}
+
+const onUpdatePet = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  const petId = data.pet.id
+  api.updatePet(petId, data)
+    .then(ui.updatePetSuccess)
+    .catch(ui.updatePetFailure)
+  $('#update-pet-button').trigger('reset')
   $('#content').html('')
 }
 
@@ -79,6 +90,7 @@ const addHandlers = function () {
   $('#viewAllPetsButton').on('click', onShowAllPets)
   $('#destroy-pet').on('submit', onDeletePet)
   $('#content').on('click', '.remove', onDeletePet)
+  $('#update-pet').on('submit', onUpdatePet)
 }
 
 module.exports = {

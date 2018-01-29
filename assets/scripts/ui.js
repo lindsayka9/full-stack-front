@@ -18,8 +18,8 @@ const signInSuccess = function (data) {
   $('#delete-pet').removeClass('hide')
 }
 
-const signInFailure = function (error) {
-  console.error(error)
+const signInFailure = function () {
+  // console.error(error)
   $('#sign-in-error').text('Incorrect Email and/or Password').css('color', 'red')
 }
 
@@ -29,8 +29,8 @@ const signUpSuccess = function (data) {
   $('#message').text('Successfully Signed Up!').css('color', 'green')
 }
 
-const signUpFailure = function (error) {
-  console.error(error)
+const signUpFailure = function () {
+  // console.error(error)
   $('#sign-up-error').text('Error signing up').css('color', 'red')
 }
 
@@ -41,8 +41,8 @@ const changePasswordSuccess = function (data) {
   $('#change-password').find('input:password, input:password, select, textarea').val('')
 }
 
-const changePasswordFailure = function (error) {
-  console.error(error)
+const changePasswordFailure = function () {
+  // console.error(error)
   $('#password-error').text('Error changing password').css('color', 'red')
   $('#change-password').find('input:password, input:password, select, textarea').val('')
 }
@@ -70,36 +70,44 @@ const signOutFailure = function (data) {
 }
 
 const createPetSuccess = function (data) {
-  console.log(data.pets)
+  // console.log(data.pets)
   $('#message').text('Pet successfully created!').css('color', 'green')
   $('#create-pet').modal('hide')
 }
 
-const createPetFailure = function (error) {
-  console.error(error)
+const createPetFailure = function () {
   $('#create-error').text('Error creating pet').css('color', 'red')
 }
 
 const showPetsSuccess = function (data) {
-  console.log(data.pets)
   const petHtml = petsTemplate({ pets: data.pets })
   $('#content').html('')
   $('#content').html(petHtml)
 }
 
-const showPetsFailure = function (error) {
-  console.error(error)
+const showPetsFailure = function () {
   $('#message').text('Error showing pets').css('color', 'red')
 }
 
 const deletePetSuccess = function (id) {
   // console.log(id)
+  $('#destroy-pet').modal('hide')
   $('#message').text('Successfully deleted pet!').css('color', 'green')
+  $('#content').html('')
 }
 
-const deletePetFailure = function (error) {
-  console.error(error)
+const deletePetFailure = function () {
   $('#message').text('Error deleting pet').css('color', 'red')
+}
+
+const updatePetSuccess = function (data) {
+  $('#update-pet').modal('hide')
+  $('#message').text('Successfully updated pet!').css('color', 'green')
+  $('#content').html('')
+}
+
+const updatePetFailure = function () {
+  $('#message').text('Error updating pet').css('color', 'red')
 }
 
 module.exports = {
@@ -116,5 +124,7 @@ module.exports = {
   showPetsSuccess,
   showPetsFailure,
   deletePetSuccess,
-  deletePetFailure
+  deletePetFailure,
+  updatePetSuccess,
+  updatePetFailure
 }
