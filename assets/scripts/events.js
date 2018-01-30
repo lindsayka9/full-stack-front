@@ -143,6 +143,17 @@ const onUpdateOwner = function (event) {
   $('#content').html('')
 }
 
+const onShowPetsByOwner = function (event) {
+  // console.log(event.target)
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  console.log(data)
+  api.showPetsByOwner(data)
+    .then(ui.showPetsByOwnerSuccess)
+    .catch(ui.showPetsByOwnerFailure)
+  $('#view-pet-button').trigger('reset')
+}
+
 const addHandlers = function () {
   $('#sign-in').on('submit', onSignIn)
   $('#sign-up').on('submit', onSignUp)
@@ -151,7 +162,6 @@ const addHandlers = function () {
   $('#create-pet').on('submit', onCreatePet)
   $('#viewAllPetsButton').on('click', onShowAllPets)
   $('#destroy-pet').on('submit', onDeletePet)
-  $('#content').on('click', '.remove', onDeletePet)
   $('#update-pet').on('submit', onUpdatePet)
   $('#show-pet').on('submit', onShowAPet)
   $('#create-owner').on('submit', onCreateOwner)
@@ -160,6 +170,7 @@ const addHandlers = function () {
   $('#content').on('click', '.remove', onDeleteOwner)
   $('#update-owner').on('submit', onUpdateOwner)
   $('#show-owner').on('submit', onShowAOwner)
+  $('#show-pets-by-owner').on('submit', onShowPetsByOwner)
 }
 
 module.exports = {

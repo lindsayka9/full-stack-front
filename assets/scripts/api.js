@@ -154,6 +154,20 @@ const updateOwner = function (data) {
   })
 }
 
+const showPetsByOwner = function (data) {
+  console.log(data)
+  return $.ajax({
+    url: config.apiOrigin + '/owners/' + data.owner.id,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
+// url: config.apiOrigin + '/games?over=true'
+
 module.exports = {
   signUp,
   signIn,
@@ -168,5 +182,6 @@ module.exports = {
   showOwners,
   deleteOwner,
   updateOwner,
-  showOwner
+  showOwner,
+  showPetsByOwner
 }

@@ -1,0 +1,20 @@
+<div class="owners-content" data-id="{{owner.id}}">
+  <h4><strong>Name:</strong> {{owner.name}}</h4>
+  <h5><strong>ID:</strong> {{owner.id}}</h5>
+  <h5><strong>Phone Number:</strong> {{owner.phone_number}}</h5>
+  <br>
+  {{#each pets as |pet|}}
+
+  <!-- template to display pet -->
+  <div class="pets-content" data-id="{{pet.id}}">
+    <h4><strong>Name:</strong> {{pet.name}}</h4>
+    <h5><strong>ID:</strong> {{pet.id}}</h5>
+    <h5><strong>Species:</strong> {{pet.species}}</h5>
+    <h5><strong>Age:</strong> {{pet.age}}</h5>
+    <h5><strong>Gender:</strong> {{pet.gender}}</h5>
+    <h5><strong>Color:</strong> {{pet.color}}</h5>
+    <br>
+  </div>
+
+  {{/each}}
+</div>

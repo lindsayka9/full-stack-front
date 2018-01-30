@@ -5,6 +5,7 @@ const store = require('./store')
 const petTemplate = require('./templates/pet-template.handlebars')
 const ownerTemplate = require('./templates/owner-template.handlebars')
 const ownersTemplate = require('./templates/owners-template.handlebars')
+const showPetsByOwnerTemplate = require('./templates/pets-by-owner-template.handlebars')
 
 const signInSuccess = function (data) {
   store.user = data.user
@@ -197,6 +198,19 @@ const showOwnerFailure = function () {
   $('#view-owner-error').text('Error retrieving record').css('color', 'red')
 }
 
+const showPetsByOwnerSuccess = function (data) {
+  console.log(data)
+  $('#message').text('Successfully retrieved pet records!').css('color', 'green')
+  const petHtml = showPetsByOwnerTemplate({ owner: data.owner, pets: data.owner.pets })
+  $('#content').html('')
+  $('#content').html(petHtml)
+}
+
+const showPetsByOwnerFailure = function (error) {
+  console.error(error)
+  $('#view-pets-by-owner-error').text('Error showing pets').css('color', 'red')
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -225,5 +239,7 @@ module.exports = {
   updateOwnerSuccess,
   updateOwnerFailure,
   showOwnerSuccess,
-  showOwnerFailure
+  showOwnerFailure,
+  showPetsByOwnerSuccess,
+  showPetsByOwnerFailure
 }

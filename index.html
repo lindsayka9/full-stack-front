@@ -55,6 +55,8 @@
       <button type="button" class="btn btn-primary crud hide" data-toggle="modal" data-target="#create-owner" id="newOwnerButton">Create Owner</button>
       <!-- Show one Owner Button -->
       <button type="button" class="btn btn-primary crud hide" data-toggle="modal" data-target="#show-owner" id="viewOneOwnerButton">View an Owner</button>
+      <!-- Show pets by owner Button -->
+      <button type="button" class="btn btn-primary crud hide" data-toggle="modal" data-target="#show-pets-by-owner" id="viewPetsByOwnerButton">View Pets of Owner</button>
       <!-- Show all Owners Button -->
       <form class="form" id="viewAllOwners">
         <button type="button" class="btn btn-primary crud hide" id="viewAllOwnersButton">View all Owners</button>
@@ -336,6 +338,34 @@
           </div>
         </div>
       </div>
+
+      <!-- view pets by owner -->
+            <div class="modal fade" id="show-pets-by-owner" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h3 class="modal-title" id="thing13">View Pets of Owner</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form class ="view-owner-modal" id="view-pets-by-owner-button">
+                      <fieldset>
+                        <input type="number" name="owner[id]" placeholder="Enter Owner ID">
+                        <input class="button" type="submit" name="submit" value="View Pets">
+                        <p id="view-pets-by-owner-error"></p>
+                      </fieldset>
+                      <!-- <button type="submit" class="btn btn-primary">Sign In</button> -->
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
+                  </div>
+                </div>
+              </div>
+            </div>
 
 <!-- update an owner -->
       <div class="modal fade" id="update-owner" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
