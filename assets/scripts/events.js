@@ -154,6 +154,12 @@ const onShowPetsByOwner = function (event) {
   $('#view-pets-by-owner-button').trigger('reset')
 }
 
+const onClear = function (event) {
+  event.preventDefault()
+  $('#content').html('')
+  $('#message').text('')
+}
+
 const addHandlers = function () {
   $('#sign-in').on('submit', onSignIn)
   $('#sign-up').on('submit', onSignUp)
@@ -171,6 +177,7 @@ const addHandlers = function () {
   $('#update-owner').on('submit', onUpdateOwner)
   $('#show-owner').on('submit', onShowAOwner)
   $('#show-pets-by-owner').on('submit', onShowPetsByOwner)
+  $('#clear-button').on('click', onClear)
 }
 
 module.exports = {
