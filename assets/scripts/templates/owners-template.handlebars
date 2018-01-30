@@ -1,11 +1,15 @@
 {{#each owners as |owner|}}
 
 <!-- template to display owner -->
+{{#if owner.id}}
 <div class="owners-content" data-id="{{owner.id}}">
-  <h4><strong>Name:</strong> {{owner.name}}</h4>
-  <h5><strong>ID:</strong> {{owner.id}}</h5>
-  <h5><strong>Phone Number:</strong> {{owner.phone_number}}</h5>
-  <br>
+    <h4><strong>Name:</strong> {{owner.name}}</h4>
+    <h5><strong>ID:</strong> {{owner.id}}</h5>
+    <h5><strong>Phone Number:</strong> {{owner.phone_number}}</h5>
+    <br>
 </div>
+{{else}}
+  <h5><strong>No Records</strong></h5>
+{{/if}}
 
 {{/each}}

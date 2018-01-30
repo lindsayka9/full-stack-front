@@ -147,11 +147,11 @@ const onShowPetsByOwner = function (event) {
   // console.log(event.target)
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log(data)
+  // console.log(data)
   api.showPetsByOwner(data)
     .then(ui.showPetsByOwnerSuccess)
     .catch(ui.showPetsByOwnerFailure)
-  $('#view-pet-button').trigger('reset')
+  $('#view-pets-by-owner-button').trigger('reset')
 }
 
 const addHandlers = function () {

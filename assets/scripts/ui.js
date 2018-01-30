@@ -26,8 +26,8 @@ const signInSuccess = function (data) {
 }
 
 const signInFailure = function () {
-  // console.error(error)
   $('#sign-in-error').text('Incorrect Email and/or Password').css('color', 'red')
+  $('#message').html('')
 }
 
 const signUpSuccess = function (data) {
@@ -37,8 +37,8 @@ const signUpSuccess = function (data) {
 }
 
 const signUpFailure = function () {
-  // console.error(error)
   $('#sign-up-error').text('Error signing up').css('color', 'red')
+  $('#message').html('')
 }
 
 const changePasswordSuccess = function (data) {
@@ -49,9 +49,9 @@ const changePasswordSuccess = function (data) {
 }
 
 const changePasswordFailure = function () {
-  // console.error(error)
   $('#password-error').text('Error changing password').css('color', 'red')
   $('#change-password').find('input:password, input:password, select, textarea').val('')
+  $('#message').html('')
 }
 
 const signOutSuccess = function (data) {
@@ -77,7 +77,6 @@ const signOutFailure = function (data) {
 }
 
 const createPetSuccess = function (data) {
-  // console.log(data.pets)
   const petHtml = petTemplate({ pet: data.pet })
   $('#message').text('Pet successfully created!').css('color', 'green')
   $('#create-pet').modal('hide')
@@ -86,21 +85,26 @@ const createPetSuccess = function (data) {
 
 const createPetFailure = function () {
   $('#create-error').text('Error creating pet').css('color', 'red')
+  $('#message').html('')
 }
 
 const showPetsSuccess = function (data) {
-  $('#message').text('Successfully retrieved pet records!').css('color', 'green')
-  const petHtml = petsTemplate({ pets: data.pets })
-  $('#content').html('')
-  $('#content').html(petHtml)
+  if (data.pets.length === 0) {
+    $('#message').text('No Records Available').css('color', 'red')
+  } else {
+    $('#message').text('Successfully retrieved pet records!').css('color', 'green')
+    const petHtml = petsTemplate({ pets: data.pets })
+    $('#content').html('')
+    $('#content').html(petHtml)
+  }
 }
 
 const showPetsFailure = function () {
   $('#view-pet-error').text('Error showing pets').css('color', 'red')
+  $('#message').html('')
 }
 
 const deletePetSuccess = function (id) {
-  // console.log(id)
   $('#destroy-pet').modal('hide')
   $('#message').text('Successfully deleted pet!').css('color', 'green')
   $('#content').html('')
@@ -108,25 +112,23 @@ const deletePetSuccess = function (id) {
 
 const deletePetFailure = function () {
   $('#destroy-pet-error').text('Error deleting pet').css('color', 'red')
+  $('#message').html('')
 }
 
 const updatePetSuccess = function (petId, data) {
   $('#update-pet').modal('hide')
   $('#message').text('Successfully updated pet!').css('color', 'green')
   $('#content').html('')
-  // console.log(data)
-  // console.log(petId.pet)
   const petHtml = petTemplate({ pet: petId.pet })
   $('#content').html(petHtml)
 }
 
 const updatePetFailure = function () {
-  // console.log(error)
   $('#update-error').text('Error updating pet').css('color', 'red')
+  $('#message').html('')
 }
 
 const showPetSuccess = function (data) {
-  // console.log(data)
   const petHtml = petTemplate({ pet: data.pet })
   $('#show-pet').modal('hide')
   $('#content').html(petHtml)
@@ -134,12 +136,11 @@ const showPetSuccess = function (data) {
 }
 
 const showPetFailure = function () {
-  // console.error(error)
   $('#view-pet-error').text('Error retrieving record').css('color', 'red')
+  $('#message').html('')
 }
 
 const createOwnerSuccess = function (data) {
-  // console.log(data.pets)
   const ownerHtml = ownerTemplate({ owner: data.owner })
   $('#message').text('Owner successfully created!').css('color', 'green')
   $('#create-owner').modal('hide')
@@ -148,13 +149,18 @@ const createOwnerSuccess = function (data) {
 
 const createOwnerFailure = function () {
   $('#create-owner-error').text('Error creating owner').css('color', 'red')
+  $('#message').html('')
 }
 
 const showOwnersSuccess = function (data) {
-  $('#message').text('Successfully retrieved owner records!').css('color', 'green')
-  const ownerHtml = ownersTemplate({ owners: data.owners })
-  $('#content').html('')
-  $('#content').html(ownerHtml)
+  if (data.owners.length === 0) {
+    $('#message').text('No Records Available').css('color', 'red')
+  } else {
+    $('#message').text('Successfully retrieved owner records!').css('color', 'green')
+    const ownerHtml = ownersTemplate({ owners: data.owners })
+    $('#content').html('')
+    $('#content').html(ownerHtml)
+  }
 }
 
 const showOwnersFailure = function () {
@@ -162,15 +168,14 @@ const showOwnersFailure = function () {
 }
 
 const deleteOwnerSuccess = function (data) {
-  // console.log(data)
   $('#destroy-owner').modal('hide')
   $('#message').text('Successfully deleted owner!').css('color', 'green')
   $('#content').html('')
 }
 
 const deleteOwnerFailure = function () {
-  // console.log(error)
   $('#destroy-owner-error').text('Error deleting owner').css('color', 'red')
+  $('#message').html('')
 }
 
 const updateOwnerSuccess = function (data) {
@@ -183,10 +188,10 @@ const updateOwnerSuccess = function (data) {
 
 const updateOwnerFailure = function () {
   $('#update-owner-error').text('Error updating owner').css('color', 'red')
+  $('#message').html('')
 }
 
 const showOwnerSuccess = function (data) {
-  // console.log(data)
   const ownerHtml = ownerTemplate({ owner: data.owner })
   $('#show-owner').modal('hide')
   $('#content').html(ownerHtml)
@@ -194,21 +199,21 @@ const showOwnerSuccess = function (data) {
 }
 
 const showOwnerFailure = function () {
-  // console.error(error)
   $('#view-owner-error').text('Error retrieving record').css('color', 'red')
+  $('#message').html('')
 }
 
 const showPetsByOwnerSuccess = function (data) {
-  console.log(data)
   $('#message').text('Successfully retrieved pet records!').css('color', 'green')
   const petHtml = showPetsByOwnerTemplate({ owner: data.owner, pets: data.owner.pets })
+  $('#show-pets-by-owner').modal('hide')
   $('#content').html('')
   $('#content').html(petHtml)
 }
 
-const showPetsByOwnerFailure = function (error) {
-  console.error(error)
+const showPetsByOwnerFailure = function () {
   $('#view-pets-by-owner-error').text('Error showing pets').css('color', 'red')
+  $('#message').html('')
 }
 
 module.exports = {
