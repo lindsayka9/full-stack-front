@@ -8,7 +8,10 @@
   <h5><strong>Age:</strong> {{pet.age}}</h5>
   <h5><strong>Gender:</strong> {{pet.gender}}</h5>
   <h5><strong>Color:</strong> {{pet.color}}</h5>
-  <h5><strong>Owner:</strong> {{pet.owner}}</h5>
+  <!-- <h5><strong>Owner:</strong> {{pet.owner}}</h5> -->
+  {{#pet.owner}}
+    <h5><strong>Owner:</strong> {{name}}</h5>
+  {{/pet.owner}}
   <br>
 </div>
 

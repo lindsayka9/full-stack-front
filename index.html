@@ -56,7 +56,7 @@
       <!-- Show one Owner Button -->
       <button type="button" class="btn btn-primary crud hide" data-toggle="modal" data-target="#show-owner" id="viewOneOwnerButton">View an Owner</button>
       <!-- Show all Owners Button -->
-      <form class="form" id="viewAll">
+      <form class="form" id="viewAllOwners">
         <button type="button" class="btn btn-primary crud hide" id="viewAllOwnersButton">View all Owners</button>
       </form>
       <!-- Update Owner Button -->
@@ -175,7 +175,7 @@
                   <input type="text" name="pet[gender]" placeholder="Enter Gender">
                   <input type="number" name="pet[age]" placeholder="Enter Age">
                   <input type="text" name="pet[color]" placeholder="Enter Color">
-                  <input type="text" name="pet[owner]" placeholder="Enter Owner Name (Last, First)">
+                  <input type="text" name="pet[owner_id]" placeholder="Enter Owner ID">
                   <input class="button" type="submit" name="submit" value="Create Pet">
                   <p id="create-error"></p>
                 </fieldset>
@@ -237,7 +237,7 @@
                   <input type="text" name="pet[gender]" placeholder="Enter Gender">
                   <input type="number" name="pet[age]" placeholder="Enter Age">
                   <input type="text" name="pet[color]" placeholder="Enter Color">
-                  <input type="text" name="pet[owner]" placeholder="Enter Owner Name (Last, First)">
+                  <input type="text" name="pet[owner_id]" placeholder="Enter Owner ID">
                   <input class="button" type="submit" name="submit" value="Update Pet">
                   <p id="update-error"></p>
                 </fieldset>

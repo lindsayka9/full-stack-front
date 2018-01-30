@@ -85,6 +85,8 @@ const deletePet = function (data) {
 }
 
 const updatePet = function (data) {
+  // console.log(data)
+  // console.log(data.pet)
   return $.ajax({
     url: config.apiOrigin + '/pets/' + data.pet.id,
     method: 'PATCH',
@@ -130,6 +132,7 @@ const showOwner = function (data) {
 }
 
 const deleteOwner = function (data) {
+  // console.log(data.owner)
   return $.ajax({
     url: config.apiOrigin + '/owners/' + data.owner.id,
     method: 'DELETE',

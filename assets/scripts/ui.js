@@ -3,6 +3,8 @@
 const petsTemplate = require('./templates/pets-template.handlebars')
 const store = require('./store')
 const petTemplate = require('./templates/pet-template.handlebars')
+const ownerTemplate = require('./templates/owner-template.handlebars')
+const ownersTemplate = require('./templates/owners-template.handlebars')
 
 const signInSuccess = function (data) {
   store.user = data.user
@@ -93,7 +95,7 @@ const showPetsSuccess = function (data) {
 }
 
 const showPetsFailure = function () {
-  $('#message').text('Error showing pets').css('color', 'red')
+  $('#view-pet-error').text('Error showing pets').css('color', 'red')
 }
 
 const deletePetSuccess = function (id) {
@@ -104,19 +106,22 @@ const deletePetSuccess = function (id) {
 }
 
 const deletePetFailure = function () {
-  $('#message').text('Error deleting pet').css('color', 'red')
+  $('#destroy-pet-error').text('Error deleting pet').css('color', 'red')
 }
 
-const updatePetSuccess = function (data) {
+const updatePetSuccess = function (petId, data) {
   $('#update-pet').modal('hide')
   $('#message').text('Successfully updated pet!').css('color', 'green')
   $('#content').html('')
-  const petHtml = petTemplate({ pet: data.pet })
+  // console.log(data)
+  // console.log(petId.pet)
+  const petHtml = petTemplate({ pet: petId.pet })
   $('#content').html(petHtml)
 }
 
 const updatePetFailure = function () {
-  $('#message').text('Error updating pet').css('color', 'red')
+  // console.log(error)
+  $('#update-error').text('Error updating pet').css('color', 'red')
 }
 
 const showPetSuccess = function (data) {
@@ -129,7 +134,67 @@ const showPetSuccess = function (data) {
 
 const showPetFailure = function () {
   // console.error(error)
-  $('#message').text('Error retrieving record').css('color', 'red')
+  $('#view-pet-error').text('Error retrieving record').css('color', 'red')
+}
+
+const createOwnerSuccess = function (data) {
+  // console.log(data.pets)
+  const ownerHtml = ownerTemplate({ owner: data.owner })
+  $('#message').text('Owner successfully created!').css('color', 'green')
+  $('#create-owner').modal('hide')
+  $('#content').html(ownerHtml)
+}
+
+const createOwnerFailure = function () {
+  $('#create-owner-error').text('Error creating owner').css('color', 'red')
+}
+
+const showOwnersSuccess = function (data) {
+  $('#message').text('Successfully retrieved owner records!').css('color', 'green')
+  const ownerHtml = ownersTemplate({ owners: data.owners })
+  $('#content').html('')
+  $('#content').html(ownerHtml)
+}
+
+const showOwnersFailure = function () {
+  $('#message').text('Error showing owners').css('color', 'red')
+}
+
+const deleteOwnerSuccess = function (data) {
+  // console.log(data)
+  $('#destroy-owner').modal('hide')
+  $('#message').text('Successfully deleted owner!').css('color', 'green')
+  $('#content').html('')
+}
+
+const deleteOwnerFailure = function () {
+  // console.log(error)
+  $('#destroy-owner-error').text('Error deleting owner').css('color', 'red')
+}
+
+const updateOwnerSuccess = function (data) {
+  $('#update-owner').modal('hide')
+  $('#message').text('Successfully updated owner!').css('color', 'green')
+  $('#content').html('')
+  const ownerHtml = ownerTemplate({ owner: data.owner })
+  $('#content').html(ownerHtml)
+}
+
+const updateOwnerFailure = function () {
+  $('#update-owner-error').text('Error updating owner').css('color', 'red')
+}
+
+const showOwnerSuccess = function (data) {
+  // console.log(data)
+  const ownerHtml = ownerTemplate({ owner: data.owner })
+  $('#show-owner').modal('hide')
+  $('#content').html(ownerHtml)
+  $('#message').text('Successfully retrieved owner record!').css('color', 'green')
+}
+
+const showOwnerFailure = function () {
+  // console.error(error)
+  $('#view-owner-error').text('Error retrieving record').css('color', 'red')
 }
 
 module.exports = {
@@ -150,5 +215,15 @@ module.exports = {
   updatePetSuccess,
   updatePetFailure,
   showPetSuccess,
-  showPetFailure
+  showPetFailure,
+  createOwnerSuccess,
+  createOwnerFailure,
+  showOwnersSuccess,
+  showOwnersFailure,
+  deleteOwnerSuccess,
+  deleteOwnerFailure,
+  updateOwnerSuccess,
+  updateOwnerFailure,
+  showOwnerSuccess,
+  showOwnerFailure
 }
