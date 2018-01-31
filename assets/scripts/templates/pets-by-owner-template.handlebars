@@ -5,6 +5,7 @@
   <br>
   {{#each pets as |pet|}}
 
+{{#if pet.id}}
   <!-- template to display pet -->
   <div class="pets-content" data-id="{{pet.id}}">
     <h4><strong>Name:</strong> {{pet.name}}</h4>
@@ -15,6 +16,9 @@
     <h5><strong>Color:</strong> {{pet.color}}</h5>
     <br>
   </div>
+  {{else}}
+    <h5><strong>No Pet Records</strong></h5>
+  {{/if}}
 
   {{/each}}
 </div>

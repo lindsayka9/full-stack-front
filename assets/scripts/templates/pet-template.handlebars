@@ -1,4 +1,6 @@
 <!-- template to display pet -->
+
+{{#if pet.id}}
 <div class="pets-content" data-id="{{pet.id}}">
   <h5><strong>Name:</strong> {{pet.name}}</h5>
   <h5><strong>Pet ID:</strong> {{pet.id}}</h5>
@@ -11,3 +13,6 @@
     <h5><strong>Owner:</strong> {{name}}</h5>
   {{/pet.owner}}
 </div>
+{{else}}
+  <h5><strong>No Records</strong></h5>
+{{/if}}

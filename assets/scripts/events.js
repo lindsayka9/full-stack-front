@@ -13,6 +13,7 @@ const onSignIn = function (event) {
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
   $('#sign-in').find('input:text, input:password, select, textarea').val('')
+  $('input').prop('required', true)
 }
 
 const onSignUp = function (event) {
@@ -23,6 +24,7 @@ const onSignUp = function (event) {
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
   $('#sign-up').find('input:text, input:password, select, textarea').val('')
+  $('input').prop('required', true)
 }
 
 const onChangePassword = function (event) {
@@ -32,6 +34,7 @@ const onChangePassword = function (event) {
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
   $('#change-password').find('input:password, input:password, select, textarea').val('')
+  $('input').prop('required', true)
 }
 
 const onSignOut = function () {
@@ -50,6 +53,7 @@ const onCreatePet = function (event) {
     .catch(ui.createPetFailure)
   $('#create-pet-button').trigger('reset')
   $('#content').html('')
+  $('input').prop('required', true)
 }
 
 const onShowAllPets = function (event) {
@@ -68,6 +72,7 @@ const onShowAPet = function (event) {
     .then(ui.showPetSuccess)
     .catch(ui.showPetFailure)
   $('#view-pet-button').trigger('reset')
+  $('input').prop('required', true)
 }
 
 const onDeletePet = function (event) {
@@ -79,6 +84,7 @@ const onDeletePet = function (event) {
     .catch(ui.deletePetFailure)
   $('#destroy-pet-button').trigger('reset')
   $('#content').html('')
+  $('input').prop('required', true)
 }
 
 const onUpdatePet = function (event) {
@@ -91,6 +97,7 @@ const onUpdatePet = function (event) {
     .catch(ui.updatePetFailure)
   $('#update-button').trigger('reset')
   $('#content').html('')
+  $('input').prop('required', true)
 }
 
 const onCreateOwner = function (event) {
@@ -101,6 +108,7 @@ const onCreateOwner = function (event) {
     .catch(ui.createOwnerFailure)
   $('#create-owner-button').trigger('reset')
   $('#content').html('')
+  $('input').prop('required', true)
 }
 
 const onShowAllOwners = function (event) {
@@ -119,6 +127,7 @@ const onShowAOwner = function (event) {
     .then(ui.showOwnerSuccess)
     .catch(ui.showOwnerFailure)
   $('#view-owner-button').trigger('reset')
+  $('input').prop('required', true)
 }
 
 const onDeleteOwner = function (event) {
@@ -131,6 +140,7 @@ const onDeleteOwner = function (event) {
     .catch(ui.deleteOwnerFailure)
   $('#destroy-owner-button').trigger('reset')
   $('#content').html('')
+  $('input').prop('required', true)
 }
 
 const onUpdateOwner = function (event) {
@@ -141,6 +151,7 @@ const onUpdateOwner = function (event) {
     .catch(ui.updateOwnerFailure)
   $('#update-owner-button').trigger('reset')
   $('#content').html('')
+  $('input').prop('required', true)
 }
 
 const onShowPetsByOwner = function (event) {
@@ -152,6 +163,7 @@ const onShowPetsByOwner = function (event) {
     .then(ui.showPetsByOwnerSuccess)
     .catch(ui.showPetsByOwnerFailure)
   $('#view-pets-by-owner-button').trigger('reset')
+  $('input').prop('required', true)
 }
 
 const onClear = function (event) {
@@ -178,6 +190,18 @@ const addHandlers = function () {
   $('#show-owner').on('submit', onShowAOwner)
   $('#show-pets-by-owner').on('submit', onShowPetsByOwner)
   $('#clear-button').on('click', onClear)
+  $('#signUpButton').on('click', function () { $('#sign-up-error').text('') })
+  $('#signInButton').on('click', function () { $('#sign-in-error').text('') })
+  $('#passwordButton').on('click', function () { $('#password-error').text('') })
+  $('#newOwnerButton').on('click', function () { $('#create-owner-error').text('') })
+  $('#viewOneOwnerButton').on('click', function () { $('#view-owner-error').text('') })
+  $('#updateOwnerButton').on('click', function () { $('#update-owner-error').text('') })
+  $('#destroyOwnerButton').on('click', function () { $('#destroy-owner-error').text('') })
+  $('#newPetButton').on('click', function () { $('#create-error').text('') })
+  $('#viewOnePetButton').on('click', function () { $('#view-pet-error').text('') })
+  $('#viewPetsByOwnerButton').on('click', function () { $('#view-pets-by-owner-error').text('') })
+  $('#updatePetButton').on('click', function () { $('#update-error').text('') })
+  $('#destroyPetButton').on('click', function () { $('#destroy-pet-error').text('') })
 }
 
 module.exports = {
