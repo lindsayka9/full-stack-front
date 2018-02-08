@@ -115,12 +115,10 @@ const deletePetFailure = function () {
   $('#message').html('')
 }
 
-const updatePetSuccess = function (petId, data) {
+const updatePetSuccess = function (data) {
   $('#update-pet').modal('hide')
-  $('#message').text('Successfully updated pet!').css('color', 'green')
-  $('#content').html('')
-  const petHtml = petTemplate({ pet: petId.pet })
-  $('#content').html(petHtml)
+  // $('#message').text('Successfully updated pet!').css('color', 'green')
+  $('#message').text(`Success! Please select "View Pet" with ID: ${data.pet.id} to view updated record!`).css('color', 'green')
 }
 
 const updatePetFailure = function () {

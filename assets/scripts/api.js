@@ -155,7 +155,6 @@ const updateOwner = function (data) {
 }
 
 const showPetsByOwner = function (data) {
-  console.log(data)
   return $.ajax({
     url: config.apiOrigin + '/owners/' + data.owner.id,
     method: 'GET',
