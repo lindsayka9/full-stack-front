@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Everton Animal Hospital</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body class="container-fluid">
+      <!-- Nav bar -->
+      <nav>
+        <button type="button" class="btn btn-primary nav" data-toggle="modal" data-target="#sign-up" id="signUpButton">Sign Up</button>
+        <button type="button" class="btn btn-primary nav" data-toggle="modal" data-target="#sign-in" id="signInButton">Sign In</button>
+        <button type="button" class="btn btn-primary hide nav" data-toggle="modal" data-target="#change-password" id="passwordButton">Change Password</button>
+        <!-- <form class="hide" id="sign-out-trigger"> -->
+          <button type="button" class="btn btn-primary nav hide" id="signOutButton">Sign Out</button>
+        <!-- </form> -->
+      </nav>
+
+      <h1>Everton Animal Hospital</h1>
+
+
+      <h3>Pet Record System</h3>
+
+        <img src="https://i.imgur.com/Wkaspma.jpg" title="source: imgur.com" alt="Boston-Terrier" height="300" width="450" class="photo">
+
+      <!-- <img src="./boston_terrier.jpg" alt="Boston-Terrier" height="300" width="450" class="photo"> -->
+
+      <!-- error/success messages here -->
+      <p class="message-area" id="message">
+
+      <p class="sign-in-message">Sign in to access patient records.</p>
+
+      <br>
+
+      <!-- CRUD buttons - Owners -->
+      <button type="button" class="btn btn-primary crud hide" data-toggle="modal" data-target="#create-owner" id="newOwnerButton">Create Owner</button>
+      <!-- Show one Owner Button -->
+      <button type="button" class="btn btn-primary crud hide" data-toggle="modal" data-target="#show-owner" id="viewOneOwnerButton">View an Owner</button>
+      <!-- Show all Owners Button -->
+      <form class="form" id="viewAllOwners">
+        <button type="button" class="btn btn-primary crud hide" id="viewAllOwnersButton">View all Owners</button>
+      </form>
+      <!-- Update Owner Button -->
+      <button type="button" class="btn btn-primary crud hide" data-toggle="modal" data-target="#update-owner" id="updateOwnerButton">Update an Owner</button>
+      <!-- Delete Owner button -->
+      <button type="button" class="btn btn-primary crud hide" data-toggle="modal" data-target="#destroy-owner" id="destroyOwnerButton">Delete an Owner</button>
+      <!-- Clear Content -->
+      <form class="form" id="clear-content">
+        <button type="button" class="btn btn-primary crud hide" data-toggle="modal" id="clear-button">Clear</button>
+      </form>
+      <br><br><br>
+
+
+      <!-- CRUD Buttons - Pets -->
+      <!-- Create Pet button -->
+      <button type="button" class="btn btn-primary crud hide" data-toggle="modal" data-target="#create-pet" id="newPetButton">Create Pet</button>
+      <!-- Show one Pet Button -->
+      <button type="button" class="btn btn-primary crud hide" data-toggle="modal" data-target="#show-pet" id="viewOnePetButton">View a Pet</button>
+      <!-- Show all Pets Button -->
+      <form class="form" id="viewAll">
+        <button type="button" class="btn btn-primary crud hide" id="viewAllPetsButton">View all Pets</button>
+      </form>
+      <!-- Show pets by owner Button -->
+      <button type="button" class="btn btn-primary crud hide" data-toggle="modal" data-target="#show-pets-by-owner" id="viewPetsByOwnerButton">View Pets of Owner</button>
+      <!-- Update Pet Button -->
+      <button type="button" class="btn btn-primary crud hide" data-toggle="modal" data-target="#update-pet" id="updatePetButton">Update a Pet</button>
+      <!-- Delete Pet button -->
+      <button type="button" class="btn btn-primary crud hide" data-toggle="modal" data-target="#destroy-pet" id="destroyPetButton">Delete a Pet</button>
+      <br><br><br>
+
+<!-- Data will display here. -->
+      <div class="display-area hide" id="content"></div>
+
+      <!-- modals start here -->
+<!-- sign up modal -->
+      <div class="modal fade" id="sign-up" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="thing">Sign Up!</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class ="sign-up-modal">
+                <form id="sign-up-form">
+                  <fieldset>
+                    <input class="sign-up-input" type="text" name="credentials[email]" placeholder="Enter Email">
+                    <input class="sign-up-input" type="password" name="credentials[password]" placeholder="Enter Password">
+                    <input class="sign-up-input" type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+                    <input class="button" type="submit" name="submit" value="Sign-Up!">
+                    <p id="sign-up-error"></p>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Sign in modal -->
+      <div class="modal fade" id="sign-in" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="thing2">Sign In!</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class ="sign-in-modal" id="sign-in-form">
+                <fieldset>
+                  <input type="text" name="credentials[email]" placeholder="Enter Email">
+                  <input type="password" name="credentials[password]" placeholder="Enter Password">
+                  <input class="button" type="submit" name="submit" value="Sign-In!">
+                  <p id="sign-in-error"></p>
+                </fieldset>
+                <!-- <button type="submit" class="btn btn-primary">Sign In</button> -->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Change Password Modal -->
+      <div class="modal fade" id="change-password" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="thing3">Change Password!</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class ="password-modal" id="change-password-button">
+                <fieldset>
+                  <input type="password" name="passwords[old]" placeholder="Enter Old Password">
+                  <input type="password" name="passwords[new]" placeholder="Enter New Password">
+                  <input class="button" type="submit" name="submit" value="Change Password!">
+                  <p id="password-error"></p>
+                </fieldset>
+                <!-- <button type="submit" class="btn btn-primary">Sign In</button> -->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- create pet  -->
+      <div class="modal fade" id="create-pet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="thing4">Create Pet</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class ="new-pet-modal" id="create-pet-button">
+                <fieldset>
+                  <input type="text" name="pet[name]" placeholder="Enter Name">
+                  <input type="text" name="pet[species]" placeholder="Enter Species">
+                  <input type="text" name="pet[gender]" placeholder="Enter Gender">
+                  <input type="number" name="pet[age]" placeholder="Enter Age">
+                  <input type="text" name="pet[color]" placeholder="Enter Color">
+                  <input type="text" name="pet[owner_id]" placeholder="Enter Owner ID">
+                  <input class="button" type="submit" name="submit" value="Create Pet">
+                  <p id="create-error"></p>
+                </fieldset>
+                <!-- <button type="submit" class="btn btn-primary">Sign In</button> -->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- view a pet -->
+      <div class="modal fade" id="show-pet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="thing5">View a Pet</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class ="view-pet-modal" id="view-pet-button">
+                <fieldset>
+                  <input type="number" name="pet[id]" placeholder="Enter Pet ID">
+                  <input class="button" type="submit" name="submit" value="View Pet">
+                  <p id="view-pet-error"></p>
+                </fieldset>
+                <!-- <button type="submit" class="btn btn-primary">Sign In</button> -->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- update a pet -->
+      <div class="modal fade" id="update-pet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="thing6">Update Pet</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class ="update-modal" id="update-button">
+                <fieldset>
+                  <input type="number" name="pet[id]" placeholder="Enter Pet ID">
+                  <input type="text" name="pet[name]" placeholder="Enter Name">
+                  <input type="text" name="pet[species]" placeholder="Enter Species">
+                  <input type="text" name="pet[gender]" placeholder="Enter Gender">
+                  <input type="number" name="pet[age]" placeholder="Enter Age">
+                  <input type="text" name="pet[color]" placeholder="Enter Color">
+                  <input type="text" name="pet[owner_id]" placeholder="Enter Owner ID">
+                  <input class="button" type="submit" name="submit" value="Update Pet">
+                  <p id="update-error"></p>
+                </fieldset>
+                <!-- <button type="submit" class="btn btn-primary">Sign In</button> -->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- Destroy pet -->
+      <div class="modal fade" id="destroy-pet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="thing7">Delete Pet Record</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class ="view-pet-modal" id="destroy-pet-button">
+                <fieldset>
+                  <input type="number" name="pet[id]" placeholder="Enter Pet ID">
+                  <input class="button" type="submit" name="submit" value="Delete Pet">
+                  <p id="destroy-pet-error"></p>
+                </fieldset>
+                <!-- <button type="submit" class="btn btn-primary">Sign In</button> -->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- create owner  -->
+      <div class="modal fade" id="create-owner" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="thing8">Create Owner</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class ="new-owner-modal" id="create-owner-button">
+                <fieldset>
+                  <input type="text" name="owner[name]" placeholder="Enter Name">
+                  <input type="text" name="owner[phone_number]" placeholder="Enter Phone Number">
+                  <input class="button" type="submit" name="submit" value="Create Owner">
+                  <p id="create-owner-error"></p>
+                </fieldset>
+                <!-- <button type="submit" class="btn btn-primary">Sign In</button> -->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- view a owner -->
+      <div class="modal fade" id="show-owner" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="thing9">View an Owner</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class ="view-owner-modal" id="view-owner-button">
+                <fieldset>
+                  <input type="number" name="owner[id]" placeholder="Enter Owner ID">
+                  <input class="button" type="submit" name="submit" value="View Owner">
+                  <p id="view-owner-error"></p>
+                </fieldset>
+                <!-- <button type="submit" class="btn btn-primary">Sign In</button> -->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- view pets by owner -->
+            <div class="modal fade" id="show-pets-by-owner" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h3 class="modal-title" id="thing13">View Pets of Owner</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form class ="view-owner-modal" id="view-pets-by-owner-button">
+                      <fieldset>
+                        <input type="number" name="owner[id]" placeholder="Enter Owner ID">
+                        <input class="button" type="submit" name="submit" value="View Pets">
+                        <p id="view-pets-by-owner-error"></p>
+                      </fieldset>
+                      <!-- <button type="submit" class="btn btn-primary">Sign In</button> -->
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+<!-- update an owner -->
+      <div class="modal fade" id="update-owner" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="thing10">Update an Owner</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class ="update-modal" id="update-owner-button">
+                <fieldset>
+                  <input type="number" name="owner[id]" placeholder="Enter Owner ID">
+                  <input type="text" name="owner[name]" placeholder="Enter Name">
+                  <input type="text" name="owner[phone_number]" placeholder="Enter Phone Number">
+                  <input class="button" type="submit" name="submit" value="Update Owner">
+                  <p id="update-owner-error"></p>
+                </fieldset>
+                <!-- <button type="submit" class="btn btn-primary">Sign In</button> -->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- Destroy owner -->
+      <div class="modal fade" id="destroy-owner" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="thing11">Delete Owner Record</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class ="view-owner-modal" id="destroy-owner-button">
+                <fieldset>
+                  <input type="number" name="owner[id]" placeholder="Enter Owner ID">
+                  <input class="button" type="submit" name="submit" value="Delete Owner">
+                  <p id="destroy-owner-error"></p>
+                </fieldset>
+                <!-- <button type="submit" class="btn btn-primary">Sign In</button> -->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <p> Made by Kathryn Lindsay </p>
+      </footer>
+    </body>
+</html>
